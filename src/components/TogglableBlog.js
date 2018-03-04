@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class TogglableBlog extends React.Component {
   constructor(props) {
@@ -45,12 +46,11 @@ class TogglableBlog extends React.Component {
     }
 
     return (
-      <div>
-        <div onClick={this.toggleVisibility}>
+      <div className="content">
+        <div onClick={this.toggleVisibility} className="textButton">
           {this.props.blog.title}: {this.props.blog.author}
         </div>
-        <div style={showWhenVisible}>
-          <div>
+        <div style={showWhenVisible} className="hideBlock">
             <ul>
               <li>
                 <a href={this.props.blog.url}>{this.props.blog.url}</a>
@@ -64,11 +64,16 @@ class TogglableBlog extends React.Component {
 
               {showRemove ? <li><button onClick={this.delete}>Delete</button></li> : ''}
             </ul>
-          </div>
         </div>
       </div>
     )
   }
+}
+
+TogglableBlog.propTypes = {
+  handleLike: PropTypes.func.isRequired,
+  handleRemove: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired
 }
 
 export default TogglableBlog

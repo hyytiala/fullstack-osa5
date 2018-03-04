@@ -177,7 +177,6 @@ class App extends React.Component {
             <TogglableBlog
               key={blog.id}
               blog={blog}
-              user={blog.user}
               handleLike={this.addLike}
               handleRemove={this.removeBlog}
               username={this.state.user.username}
